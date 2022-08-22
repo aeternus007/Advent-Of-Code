@@ -4,12 +4,15 @@ class Light:
 
     def toggle(self):
         self.on = not self.on
+        # print("toggle")
 
     def turn_on(self):
-        self.on = False
+        self.on = True
+        # print("turned on")
 
     def turn_off(self):
         self.on = False
+        # print("turned off")
         
 
 with open("assignment.txt", "r") as data:
@@ -19,12 +22,9 @@ lights_on = 0
 light_raster = [[Light() for x in range(1001)] for y in range(1001)]
 
 for step in assignment:
-    action = assignment[0]
+    action = step[0]
     starting_location = (step[1], step[2])
-    ending_location = (step[3], step[4])
-
-    print(starting_location)
-    print(ending_location)
+    ending_location = (step[3] + 1, step[4] + 1)
 
     for light_line in light_raster[starting_location[0] : ending_location[0]]:
         for light in light_line[starting_location[1] : ending_location[1]]:
